@@ -1,0 +1,26 @@
+
+
+//67. Add Binary
+string addBinary(string a, string b) {
+        string s3="";
+        int idx1=a.size()-1,idx2=b.size()-1;
+        int carry=0;
+
+        while(idx1>=0 || idx2>=0 || carry){
+            int s1=0,s2=0;
+            if(idx1>=0){
+                s1=a[idx1]-'0';
+                idx1--;
+            }
+            if(idx2>=0){
+                s2=b[idx2]-'0';
+                idx2--;
+            }
+
+            int sum=s1+s2+carry;
+            s3+=(sum%2)+'0';
+            carry=sum/2;
+        }
+        reverse(s3.begin(),s3.end());
+        return s3;
+    }
