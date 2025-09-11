@@ -1,0 +1,21 @@
+
+//9. Palindrome Number
+//using two pointer
+bool isPalindrome(int x) {
+        string number=to_string(x);
+        int n=number.size();
+        int start=0;
+        int end=n-1;
+
+        while(start<=end){
+            if(number[start]==number[end]){
+                start++;
+                end--;
+            }
+            else{
+                return false;
+                break;
+            }
+        }
+        return true;
+    }
