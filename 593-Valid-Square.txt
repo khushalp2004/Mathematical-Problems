@@ -1,0 +1,45 @@
+
+
+///593. Valid Square
+//check all sides
+//diagonals must be equal
+//diagonal longer than sides
+int distSQ(vector<int> &p1,vector<int> &p2){
+        int diffX=p1[0]-p2[0];
+        int diffY=p1[1]-p2[1];
+        return (diffX*diffX)+(diffY*diffY);
+    }
+bool validSquare(vector<int>& p1, vector<int>& p2, vector<int>& p3, vector<int>& p4) {
+        vector<vector<int>> pts={p1,p2,p3,p4};
+        vector<int> dists;
+
+        //compute all pairs
+        for(int i=0;i<4;i++){
+            for(int j=i+1;j<4;j++){
+                dists.push_back(distSQ(pts[i],pts[j]));
+            }
+        }
+
+        ///sort
+        sort(dists.begin(),dists.end());
+
+
+        if(dists[0]==0){
+            return false;
+        }
+        if(!(dists[0]==dists[1] && dists[1]==dists[2] && dists[2]==dists[3])){
+            return false;
+        }
+
+        //lasts 2 diagonal equals
+        if(!(dists[4]==dists[5])){
+            return false;
+        }
+
+        //diagonal longer than sides
+        if(dists[4]!=2*dists[0]){
+            return false;
+        }
+
+        return true;
+    }
